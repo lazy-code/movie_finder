@@ -1,0 +1,23 @@
+{
+  "name": "movie_finder",
+  "version": "1.0.0",
+  "description": "Movie info finder",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alex Ben",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify":"*",
+    "gulp":"*",
+    "flux":"*",
+    "reactify":"*",
+    "vinyl-source-stream":"*",
+    "object-assign":"*"
+  },
+  "dependencies": {
+    "react":"*",
+    "react-dom":"*"
+  }
+}
