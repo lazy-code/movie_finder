@@ -13,7 +13,12 @@ var SearchForm = React.createClass({
 
   handleSubmit: function (e) {
     e.preventDefault();
-    console.log('submitted');
+
+    var movie = {
+      title: this.state.movieTitle
+    };
+
+    AppActions.searchMovies(movie);
   },
 
   render: function(){

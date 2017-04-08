@@ -24,7 +24,10 @@ var AppStore = assign({}, EventEmitter.prototype, {
 AppDispatcher.register(function (payload) {
   var action = payload.action;
   switch (action.type) {
-
+    case AppConstants.SEARCH_MOVIES:
+      AppAPI.searchMovies(action.movie);
+      AppStore.emit(CHANGE_EVENT);
+      break;
   }
   return true;
 });
