@@ -7,3 +7,5 @@ Built with:
 <li>Gulp</li>
 <li>Browserify</li>
 </ul>
+
+<a href="http://lazy-coding.com/react/moviefinder/" target="_blank">Demo</a>
