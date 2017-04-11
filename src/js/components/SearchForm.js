@@ -1,18 +1,28 @@
 var React = require('react');
 var AppActions = require('../actions/AppActions');
-var AppStore = require('../stores/AppStores');
 
 var SearchForm = React.createClass({
   getInitialState: function() {
-    return { movieTitle: '' };
+    return {
+      movieTitle: '',
+      isTitleValid: true
+    };
   },
 
   handleChange: function (e) {
-    this.setState({ movieTitle: e.target.value.trim() })
+    this.setState({
+      movieTitle: e.target.value.trim(),
+      isTitleValid: true
+    })
   },
 
   handleSubmit: function (e) {
     e.preventDefault();
+
+    if (this.state.movieTitle.length < 1) {
+      this.setState({ isTitleValid: false });
+      return false;
+    }
 
     var movie = {
       title: this.state.movieTitle
@@ -22,10 +32,16 @@ var SearchForm = React.createClass({
   },
 
   render: function(){
+
+    var message = !this.state.isTitleValid ?
+      <div className="alert alert-danger">Enter a movie title</div> :
+      null;
+
     return (
       <div className="search-form">
         <h1 className="text-center">Search Movie</h1>
         <form onSubmit={this.handleSubmit}>
+          {message}
           <div className="form-group">
             <input
               className="form-control"
