@@ -7,7 +7,6 @@ var AppAPI = require('../utils/appAPI');
 var CHANGE_EVENT = 'change';
 
 var _movies = [];
-var _selected = '';
 
 var AppStore = assign({}, EventEmitter.prototype, {
   setMovieResults: function (movies) {
@@ -32,10 +31,11 @@ AppDispatcher.register(function (payload) {
   switch (action.type) {
     case AppConstants.SEARCH_MOVIES:
       AppAPI.searchMovies(action.movie);
-      AppStore.emit(CHANGE_EVENT);
+      AppStore.emitChange();
       break;
     case AppConstants.RECEIVE_MOVIE_RESULTS:
       AppStore.setMovieResults(action.movies);
+      AppStore.emitChange();
       break;
   }
   return true;

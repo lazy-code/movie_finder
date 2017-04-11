@@ -1,7 +1,7 @@
 var React = require('react');
-var AppActions = require('../actions/AppActions');
 var AppStore = require('../stores/AppStores');
 var SearchForm = require('./SearchForm');
+var MovieResults = require('./MovieResults');
 
 var getAppState = function () {
   return {
@@ -22,18 +22,34 @@ var App = React.createClass({
     AppStore.removeChangeListener(this._onChange);
   },
 
+  _onChange: function () {
+    this.setState(getAppState());
+  },
+
   render: function(){
-    console.log(this.state.movies);
+    var moviesResults, movies = this.state.movies;
+    if ( Array.isArray(movies) ) {
+      if ( movies.length === 0 ){
+        moviesResults = null;
+      } else {
+        moviesResults = <MovieResults movies={movies} />;
+      }
+    }
+    if ( typeof movies === 'undefined' ){
+      moviesResults = <div>
+        <h3 className="text-center">Results</h3>
+        <div className="alert alert-info">No movie found with such title</div>
+      </div>;
+    }
+
     return (
       <div>
         <SearchForm />
+        {moviesResults}
       </div>
     )
-  },
-  
-  _onChange: function () {
-    this.setState(getAppState());
   }
+
 });
 
 module.exports = App;
