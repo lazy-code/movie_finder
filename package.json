@@ -9,15 +9,18 @@
   "author": "Alex Ben",
   "license": "ISC",
   "devDependencies": {
-    "browserify":"*",
-    "gulp":"*",
-    "flux":"*",
-    "reactify":"*",
-    "vinyl-source-stream":"*",
-    "object-assign":"*"
+    "browserify": "*",
+    "flux": "*",
+    "gulp": "*",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.1.2",
+    "object-assign": "*",
+    "prop-types": "^15.5.6",
+    "reactify": "*",
+    "vinyl-source-stream": "*"
   },
   "dependencies": {
-    "react":"*",
-    "react-dom":"*"
+    "react": "*",
+    "react-dom": "*"
   }
 }
